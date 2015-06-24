@@ -1,3 +1,11 @@
 <!doctype html>
-<title>bryclee</title>
-<h1>Hello {{ name }}</h1>
+<head>
+	<title>bryclee</title>
+	<link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}"/>
+</head>
+<body>
+	{% block header %}
+		<div class='header'>bryclee</div>
+		<script src="{{ url_for('static', filename='name.js') }}"></script>
+	{% endblock %}
+</body>
