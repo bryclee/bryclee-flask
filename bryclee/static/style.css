@@ -1,11 +1,46 @@
 body {
-	margin: 30px 20px;
+	margin: 50px 50px;
 }
 
-.header {
-	font: 40px tahoma, sans-serif;
-}
+#header		{	font: 50px tahoma, sans-serif;	}
+#subheader	{	font: 30px tahoma, sans-serif;
+				margin: 20px 10px;	}
 
 .letter {
+	color: black;
+	position: relative;
 	margin: 0px 5px;
+}
+
+.enter {
+	-moz-animation-duration: 0.8s;
+	-webkit-animation-duration: 0.8s;
+	-moz-animation-name: enter;
+	-webkit-animation-name: enter;
+}
+
+@-moz-keyframes enter {
+	from {
+		opacity: 0.2;
+		color: red;
+		top: -20px;
+	}
+
+	to {
+		opacity: 1;
+		top: 0px;
+	}
+}
+
+@-webkit-keyframes enter {
+	from {
+		opacity: 0.2;
+		color: red;
+		top: -20px;
+	}
+
+	to {
+		opacity: 1;
+		top: 0px;
+	}
 }
