@@ -1,9 +1,6 @@
 (function() {
 	var header = document.querySelector('#header');
-	var subheader = document.querySelector('#subheader');
 	header.innerHTML = '';
-	subheader.innerHTML = 'Site in progress';
-	var nameString = 'bryclee';
 
 	var headerWords = [
 		'bl', 'bryclee', 'bryan c lee', 'be a cat'

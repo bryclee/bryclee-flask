@@ -7,8 +7,9 @@ body {
 				height: 70px;	}
 #subheader	{	font: 25px arial;
 				position: relative;
-				margin: 20px 10px;	}
+				margin: 20px 0px 50px 0px;	}
 
+/* For the rotating name banner */
 .letter {
 	color: black;
 	position: absolute;
@@ -24,16 +25,14 @@ body {
 	-moz-animation-name: enter;
 	-webkit-animation-name: enter;
 }
-
 @-moz-keyframes enter {
 	from 	{	opacity: 0.2;
-				color: red;
+				color: orange;
 				margin-top: -20px;	}
 }
-
 @-webkit-keyframes enter {
 	from 	{	opacity: 0.2;
-				color: red;
+				color: orange;
 				margin-top: -20px;	}
 }
 
@@ -46,13 +45,21 @@ body {
 	-moz-animation-name: exit;
 	-webkit-animation-name: exit;
 }
-
 @-moz-keyframes exit {
 	from 	{	opacity: 1;
+				color: black;
+				margin-top: 0px;	}
+}
+@-webkit-keyframes exit {
+	from 	{	opacity: 1;
+				color: black;
 				margin-top: 0px;	}
 }
 
-@-webkit-keyframes exit {
-	from 	{	opacity: 1;
-				margin-top: 0px;	}
+/* Content styling */
+.main-container {
+	background-color: #EEEEF6;
+	padding: 20px 40px;
+	margin: 0px auto;
+	max-width: 960px;
 }
