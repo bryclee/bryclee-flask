@@ -5,7 +5,9 @@
 	subheader.innerHTML = 'Site in progress';
 	var nameString = 'bryclee';
 
-	var headerWords = ['bl', 'bryclee', 'bryan c lee', 'b a cat'];
+	var headerWords = [
+		'bl', 'bryclee', 'bryan c lee', 'be a cat'
+	];
 	var characterNodes = [];
 
 	var changeHeaderWord = function(newWord) {
