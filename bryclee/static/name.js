@@ -3,7 +3,7 @@
 	header.innerHTML = '';
 
 	var headerWords = [
-		'bl', 'bryclee', 'bryan c lee', 'be a cat'
+		'bl', 'bryclee', 'bryan c lee', 'cats are cool', 'so are dogs'
 	];
 	var characterNodes = [];
 
@@ -13,18 +13,21 @@
 		var tempNodeStorage = [];
 		var removeNodeStorage = [];
 		var i, pos, node;
-		for (i = 0; i < newWord.length; i++) {
+		for (i = newWord.length - 1; i >= 0; i--) {
 			newWordLetters[newWord[i]] = newWordLetters[newWord[i]] || [];
 			newWordLetters[newWord[i]].push(i);
 		}
 		while (node = characterNodes.pop()) {
+			tempNodeStorage.push(node);
+		}
+		while (node = tempNodeStorage.pop()) {
 			if (newWordLetters[node.letter]) {
 				pos = newWordLetters[node.letter].pop();
 				newWordNodes[pos] = node.node;
 				if (!newWordLetters[node.letter].length) {
 					delete newWordLetters[node.letter];
 				}
-				tempNodeStorage.push(node);
+				characterNodes.push(node);
 			} else {
 				removeNodeStorage.push(node);
 				node.node.className = 'letter exit';
@@ -40,9 +43,6 @@
 				newWordNodes[i] = node;
 			}
 			newWordNodes[i].style.left = i * 50 + 'px';
-		}
-		while (node = tempNodeStorage.pop()) {
-			characterNodes.push(node);
 		}
 		window.setTimeout(function() {
 			var node;
