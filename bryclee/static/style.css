@@ -1,11 +1,12 @@
 body {
+	font: 20px Century Gothic;
 	margin: 50px 50px;
 }
 
 #header		{	font: 70px courier new;
 				position: relative;
 				height: 70px;	}
-#subheader	{	font: 25px arial;
+#subheader	{	font-size: 25px;
 				position: relative;
 				margin: 20px 0px 50px 0px;	}
 
@@ -59,7 +60,8 @@ body {
 /* Content styling */
 .main-container {
 	background-color: #EEEEF6;
+	border-radius: 5px;
 	padding: 20px 40px;
 	margin: 0px auto;
-	max-width: 960px;
+	max-width: 600px;
 }
