@@ -7,12 +7,15 @@
 </head>
 <body>
 	{% block header %}
-	<div id='header'>bryclee</div>
-	<div id='subheader'>Hi, I'm Bryan Lee.</div>
+	<div id="header">
+		<a href="{{ url_for('index') }}"><span class="fill-parent"></span></a>
+		<span id="header-letters">bryclee</span>
+	</div>
+	<div id="subheader">Hi, I'm Bryan Lee.</div>
 	<script src="{{ url_for('static', filename='name.js') }}"></script>
 	{% endblock %}
 	{% block content %}
-	<div class='main-container'>
+	<div class="main-container">
 		<p>I'm a software engineer in the Bay Area. I work with JavaScript and the
 		full-stack, but I love learning and working with new technologies.</p>
 		<p>I'm still working on my site, so come back soon and hopefully
