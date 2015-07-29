@@ -2,7 +2,7 @@ html, body {
 	box-sizing: border-box;
 	font: 20px Century Gothic;
 	margin: 0;
-	min-width: 1050px;
+	min-width: 700px;
 }
 * {
 	box-sizing: inherit;
@@ -90,31 +90,33 @@ html, body {
 	max-width: 1000px;
 	margin: 0px auto;
 }
+.main-content:after {
+	float: clear;
+}
 
 .left-col-wrapper, .left-col {
-	display: inline-block;
+	float: left;
 	min-height: 1px;
 	vertical-align: top;
 	width: 300px;
 }
 .left-col {
 	padding: 20px;
-	top: 120px;
+	top: 110px;
 }
 
 .center-col {
-	display: inline-block;
+	overflow: auto;
 	padding: 20px;
-	width: 650px;
 }
 
 .sidebar-about {
 	font-size: 12pt;
 }
-.post-content{
+.blog-post {
 	background-color: #EEEEF6;
 	border-radius: 5px;
+	margin: 30px 20px;
 	padding: 10px 20px;
-	margin: 0px auto;
 	max-width: 600px;
 }
