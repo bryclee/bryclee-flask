@@ -7,16 +7,18 @@
 </head>
 <body>
 	<div class="header-bar">
-		<div id="header-banner">
-			<a href="{{ url_for('index') }}"><span class="fill-parent"></span></a>
-			<span id="header-letters">bryclee</span>
+		<div class="header-bar-fill fixed">
+			<div class="fixed" id="header-banner">
+				<a href="{{ url_for('index') }}"><span class="fill-parent"></span></a>
+				<span id="header-letters">bryclee</span>
+			</div>
 		</div>
 	</div>
 	<script src="{{ url_for('static', filename='name.js') }}"></script>
 
 	<div class="main-content">
 		<div class="left-col-wrapper">
-			<div class="left-col">
+			<div class="left-col fixed">
 				<div id="subheader">Hi, I'm Bryan Lee.</div>
 				<div class="sidebar-about">
 					<p>I'm a software engineer in the Bay Area. I work with JavaScript and the
