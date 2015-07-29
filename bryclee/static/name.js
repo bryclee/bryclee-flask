@@ -1,5 +1,5 @@
 (function() {
-	var header = document.querySelector('#header');
+	var header = document.querySelector('#header-banner');
 	var headerLetters = document.querySelector('#header-letters');
 	headerLetters.innerHTML = '';
 

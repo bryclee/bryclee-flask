@@ -6,23 +6,43 @@
 	<link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}"/>
 </head>
 <body>
-	{% block header %}
-	<div id="header">
-		<a href="{{ url_for('index') }}"><span class="fill-parent"></span></a>
-		<span id="header-letters">bryclee</span>
+	<div class="header-bar">
+		<div id="header-banner">
+			<a href="{{ url_for('index') }}"><span class="fill-parent"></span></a>
+			<span id="header-letters">bryclee</span>
+		</div>
 	</div>
-	<div id="subheader">Hi, I'm Bryan Lee.</div>
 	<script src="{{ url_for('static', filename='name.js') }}"></script>
-	{% endblock %}
-	{% block content %}
-	<div class="main-container">
-		<p>I'm a software engineer in the Bay Area. I work with JavaScript and the
-		full-stack, but I love learning and working with new technologies.</p>
-		<p>I'm still working on my site, so come back soon and hopefully
-		see it change!</p>
-		<p>In the meantime, please check out my
-		<a href="{{ url_for('static', filename='resume.pdf') }}">resume</a> or my
-		<a href="https://github.com/bryclee">github</a> to see some of my work!</p>
+
+	<div class="main-content">
+		<div class="left-col-wrapper">
+			<div class="left-col">
+				<div id="subheader">Hi, I'm Bryan Lee.</div>
+				<div class="sidebar-about">
+					<p>I'm a software engineer in the Bay Area. I work with JavaScript and the
+					full-stack, but I love learning and working with new technologies.</p>
+					<p>I'm still working on my site, so come back soon and hopefully
+					see it change!</p>
+					<p>In the meantime, please check out my
+					<a href="{{ url_for('static', filename='resume.pdf') }}">resume</a> or my
+					<a href="https://github.com/bryclee">github</a> to see some of my work!</p>
+				</div>
+			</div>
+		</div>
+		<div class="center-col">
+			{% for post in posts %}
+			<div class="blog-post">
+				<h1 class="post-title">{{ post.title }}</h1>
+				<div class="post-content">
+					<div class="post-text">{{ post.text }}</div>
+					<div class="post-tags">
+						{% for tag in post.tags %}
+						<span class="post-tag">{{ tag }}</span>
+						{% endfor %}
+					</div>
+				</div>
+			</div>
+			{% endfor %}
+		</div>
 	</div>
-	{% endblock %}
 </body>

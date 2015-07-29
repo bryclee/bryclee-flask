@@ -1,17 +1,28 @@
-body {
+html, body {
+	box-sizing: border-box;
 	font: 20px Century Gothic;
-	margin: 50px 50px;
+	margin: 0;
+}
+* {
+	box-sizing: inherit;
 }
 
-#header		{	font: 70px courier new;
-				position: relative;
-				height: 70px;
-				line-height: 70px;
-				-moz-transition: width 1s;
-				-webkit-transition: width 1s;	}
+.header-bar {
+	position: fixed;
+	left: 0;
+	top: 0;
+	padding: 20px;
+	width: 100%;
+}
+#header-banner {
+	font: 70px courier new;
+	height: 70px;
+	position: relative;
+	-moz-transition: width 1s;
+	-webkit-transition: width 1s;
+}
 #subheader	{	font-size: 25px;
-				position: relative;
-				margin: 20px 0px 50px 0px;	}
+				position: relative;	}
 .fill-parent {	position: absolute;
 				width: 100%;
 				height: 100%;
@@ -64,11 +75,37 @@ body {
 				margin-top: 0px;	}
 }
 
-/* Content styling */
-.main-container {
+/* Main Content styling */
+.main-content {
+	max-width: 1000px;
+	margin: 0px auto;
+	padding-top: 120px;
+}
+
+.left-col-wrapper, .left-col {
+	display: inline-block;
+	width: 300px;
+	min-height: 1px;
+}
+.left-col {
+	padding: 20px;
+	position: fixed;
+	top: 120px;
+}
+
+.center-col {
+	display: inline-block;
+	padding: 20px;
+	width: 650px;
+}
+
+.sidebar-about {
+	font-size: 12pt;
+}
+.post-content{
 	background-color: #EEEEF6;
 	border-radius: 5px;
-	padding: 20px 40px;
+	padding: 10px 20px;
 	margin: 0px auto;
 	max-width: 600px;
 }

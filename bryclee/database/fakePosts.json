@@ -1,0 +1,20 @@
+[
+	{
+		"id": 0,
+		"tags": ["intro"],
+		"text": "Hello, this is an intro post. \nStuff is in here.",
+		"title": "Intro Post"
+	},
+	{
+		"id": 1,
+		"tags": ["info", "random"],
+		"text": "Wow I have 2 sample posts.",
+		"title": "Second"
+	},
+	{
+		"id": 2,
+		"tags": ["getting", "older"],
+		"text": "Dang, how time flies",
+		"title": "Time"
+	}
+]
