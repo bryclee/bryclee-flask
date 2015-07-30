@@ -2,6 +2,8 @@ import os, sys
 from bryclee import app
 from flask import request, render_template, jsonify
 
+from bryclee.imgur import imgurRequest
+
 #Sample data
 from bryclee.database.fakeData import jsonData
 
@@ -21,6 +23,10 @@ def get_post(id):
 def get_posts():
 	return 'a bunch of posts'
 
-@app.route('/test')
-def test():
-	return render_template('post.html', posts=jsonData)
+@app.route('/mirror/<path>', methods=['GET'])
+def imgur_mirror(path):
+	return render_template('imgur.html', url='/imgur/' + path)
+
+@app.route('/imgur/<path>', methods=['GET'])
+def imgur(path):
+	return imgurRequest(path)
