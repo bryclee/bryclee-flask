@@ -1,14 +1,18 @@
 (function() {
-	var header = document.querySelector('#header-banner');
-	var headerLetters = document.querySelector('#header-letters');
-	headerLetters.innerHTML = '';
+	var WordBanner = function(parentDiv) {
+		this.characterNodes = [];
+		this.wordList = [];
+		this.rotateHandle;
 
-	var headerWords = [
-		'bl', 'bryclee', 'bryan c lee', 'cats are cool', 'so are dogs'
-	];
-	var characterNodes = []; //This array holds the current character nodes
+		var headerLetters = document.createElement('span');
+		headerLetters.id = 'header-letters';
+		parentDiv.appendChild(headerLetters);
 
-	var changeHeaderWord = function(newWord) {
+		this.parentDiv = parentDiv;
+		this.headerLetters = headerLetters;
+	};
+
+	WordBanner.prototype.changeHeaderWord = function(newWord) {
 		var newWordLetters = {};
 		var newWordNodes = [];
 		var tempNodeStorage = [];
@@ -20,7 +24,8 @@
 			newWordLetters[newWord[i]] = newWordLetters[newWord[i]] || [];
 			newWordLetters[newWord[i]].push(i);
 		}
-		while (node = characterNodes.pop()) {
+
+		while (node = this.characterNodes.pop()) {
 			tempNodeStorage.push(node);
 		}
 		//Compare the current letters to the new word letters, marking the nodes that
@@ -33,7 +38,7 @@
 				if (!newWordLetters[node.letter].length) {
 					delete newWordLetters[node.letter];
 				}
-				characterNodes.push(node);
+				this.characterNodes.push(node);
 			} else {
 				removeNodeStorage.push(node);
 				node.node.className = 'letter exit';
@@ -46,31 +51,43 @@
 				node = document.createElement('span');
 				node.textContent = node.innerText = newWord[i];
 				node.className = 'letter enter';
-				headerLetters.appendChild(node);
-				characterNodes.push({letter: newWord[i], node: node});
+				this.headerLetters.appendChild(node);
+				this.characterNodes.push({letter: newWord[i], node: node});
 				newWordNodes[i] = node;
 			}
 			newWordNodes[i].style.left = i * 50 + 'px';
 		}
 		//Set width of parent for the anchor tag to properly resize
-		header.style.width = newWord.length * 50 + 'px';
+		this.parentDiv.style.width = newWord.length * 50 + 'px';
 
 		//Clean up nodes that were marked for removal after the exit animation has finished playing
-		window.setTimeout(function() {
+		window.setTimeout((function() {
 			var node;
 			while (node = removeNodeStorage.pop()) {
-				headerLetters.removeChild(node.node);
+				this.headerLetters.removeChild(node.node);
 			}
-		}, 800);
+		}).bind(this), 800);
 	};
 
 	//Cycle through the words in the headerWords array
-	var setNextWord = function(index, delay) {
-		changeHeaderWord(headerWords[index]);
-		window.setTimeout(function() {
-			setNextWord((index + 1) % headerWords.length, delay);
-		}, delay);
+	WordBanner.prototype.rotateWords = function(delay) {
+		var index = 0;
+
+		var setNextWord = (function() {
+			if (index >= this.wordList.length) {
+				index = 0;
+			}
+
+			this.changeHeaderWord(this.wordList[index] || '');
+
+			this.rotateHandle = window.setTimeout(function() {
+				index++;
+				setNextWord();
+			}, delay);
+		}).bind(this);
+
+		setNextWord();
 	};
 
-	setNextWord(0, 2000);
+	window.WordBanner = WordBanner;
 })();

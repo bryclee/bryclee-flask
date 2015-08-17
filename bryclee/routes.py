@@ -27,6 +27,7 @@ def get_posts():
 def imgur_mirror(path):
 	return render_template('imgur.html', url='/imgur/' + path)
 
+#Could remove having two paths if I can set the content type of the images properly
 @app.route('/imgur/<path>', methods=['GET'])
 def imgur(path):
 	return imgurRequest(path)
