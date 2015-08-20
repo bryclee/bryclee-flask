@@ -1,8 +1,10 @@
 import os
 from imgurpython import ImgurClient
-from bryclee import app
-from flask import request, make_response
+from urllib.request import Request, urlopen
+from urllib.error import URLError
+from urllib.parse import urlencode
 
+#Initialize Imgur API for fetching image data
 def getClientId():
 	try:
 		return os.environ['IMGUR_ID']
@@ -20,10 +22,32 @@ def getClientSecret():
 client_id = getClientId()
 client_secret = getClientSecret()
 
+#Imgur client
 client = ImgurClient(client_id, client_secret)
 
-@app.route('/mirror/<id>', methods=['GET'])
-def imgur_mirror(id):
+#Retrieve data about the image
+def get_imgur_data(id):
 	image = client.get_image(id)
-	print(image)
-	return '1'
+	return {
+				'title': getattr(image, 'title'),
+				'description': getattr(image, 'description'),
+				'link': getattr(image, 'link')
+			}
+
+
+images = {}
+
+#Gets the image at the requested path from imgur, cache result in a dict
+def get_imgur_image(link):
+	if link in images:
+		return images[link]
+
+	req = Request(link, None, {}, None, None, 'GET')
+
+	try:
+		response = urlopen(req)
+	except URLError as e:
+		return e.code
+
+	images[link] = response.read()
+	return images[link]

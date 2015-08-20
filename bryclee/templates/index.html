@@ -10,11 +10,17 @@
 		<div class="header-bar-fill fixed">
 			<div class="fixed" id="header-banner">
 				<a href="{{ url_for('index') }}"><span class="fill-parent"></span></a>
-				<span id="header-letters">bryclee</span>
 			</div>
 		</div>
 	</div>
 	<script src="{{ url_for('static', filename='name.js') }}"></script>
+	<script>
+		var banner = new window.WordBanner(document.querySelector('#header-banner'));
+		banner.wordList = [
+			'bl', 'bryclee', 'bryan c lee', 'cats are cool', 'so are dogs'
+		];
+		banner.rotateWords(2000);
+	</script>
 
 	<div class="main-content">
 		<div class="left-col-wrapper">
