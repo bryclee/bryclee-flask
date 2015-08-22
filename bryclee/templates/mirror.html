@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>bryclee mirror</title>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style/mirror.css') }}"/>
+</head>
+<body>
+  {% if data.title %}
+    <h1 class="title">{{ data.title }}</h1>
+  {% endif %}
+  <div class="image-container">
+    {% if data.description %}
+    	<p>{{ data.description }}</p>
+    {% endif %}
+    {% if data.id %}
+      <img class="image" src={{ url_for('image', path=data.id) }}>
+    {% endif %}
+  </div>
+
+</body>
+</html>
